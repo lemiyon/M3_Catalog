@@ -27,6 +27,9 @@
 		336088FC1BD8C07500AB9492 /* shuttlecock.png in Resources */ = {isa = PBXBuildFile; fileRef = 336088F11BD8C07500AB9492 /* shuttlecock.png */; };
 		336088FD1BD8C07500AB9492 /* tennis.png in Resources */ = {isa = PBXBuildFile; fileRef = 336088F21BD8C07500AB9492 /* tennis.png */; };
 		336088FE1BD8C07500AB9492 /* volleyball.png in Resources */ = {isa = PBXBuildFile; fileRef = 336088F31BD8C07500AB9492 /* volleyball.png */; };
+		336089001BD8CA3C00AB9492 /* CartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336088FF1BD8CA3C00AB9492 /* CartCell.swift */; };
+		336089031BD8CB2100AB9492 /* add.png in Resources */ = {isa = PBXBuildFile; fileRef = 336089011BD8CB2100AB9492 /* add.png */; };
+		336089041BD8CB2100AB9492 /* remove.png in Resources */ = {isa = PBXBuildFile; fileRef = 336089021BD8CB2100AB9492 /* remove.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +76,9 @@
 		336088F11BD8C07500AB9492 /* shuttlecock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shuttlecock.png; sourceTree = "<group>"; };
 		336088F21BD8C07500AB9492 /* tennis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tennis.png; sourceTree = "<group>"; };
 		336088F31BD8C07500AB9492 /* volleyball.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = volleyball.png; sourceTree = "<group>"; };
+		336088FF1BD8CA3C00AB9492 /* CartCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartCell.swift; sourceTree = "<group>"; };
+		336089011BD8CB2100AB9492 /* add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = add.png; sourceTree = "<group>"; };
+		336089021BD8CB2100AB9492 /* remove.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = remove.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,8 @@
 				336088F11BD8C07500AB9492 /* shuttlecock.png */,
 				336088F21BD8C07500AB9492 /* tennis.png */,
 				336088F31BD8C07500AB9492 /* volleyball.png */,
+				336089011BD8CB2100AB9492 /* add.png */,
+				336089021BD8CB2100AB9492 /* remove.png */,
 				336088E51BD8BD0900AB9492 /* Cart.png */,
 				336088B71BD8BC0A00AB9492 /* AppDelegate.swift */,
 				336088B91BD8BC0A00AB9492 /* ViewController.swift */,
@@ -142,6 +150,7 @@
 				336088C01BD8BC0A00AB9492 /* LaunchScreen.storyboard */,
 				336088C31BD8BC0A00AB9492 /* Info.plist */,
 				336088E71BD8BDEC00AB9492 /* ProductCell.swift */,
+				336088FF1BD8CA3C00AB9492 /* CartCell.swift */,
 			);
 			path = M3_Catalog;
 			sourceTree = "<group>";
@@ -271,12 +280,14 @@
 				336088F61BD8C07500AB9492 /* billiard.png in Resources */,
 				336088C21BD8BC0A00AB9492 /* LaunchScreen.storyboard in Resources */,
 				336088F91BD8C07500AB9492 /* icehockey.png in Resources */,
+				336089031BD8CB2100AB9492 /* add.png in Resources */,
 				336088FE1BD8C07500AB9492 /* volleyball.png in Resources */,
 				336088F81BD8C07500AB9492 /* golf.png in Resources */,
 				336088F71BD8C07500AB9492 /* football.png in Resources */,
 				336088F41BD8C07500AB9492 /* baseball.png in Resources */,
 				336088FD1BD8C07500AB9492 /* tennis.png in Resources */,
 				336088E61BD8BD0900AB9492 /* Cart.png in Resources */,
+				336089041BD8CB2100AB9492 /* remove.png in Resources */,
 				336088BF1BD8BC0A00AB9492 /* Assets.xcassets in Resources */,
 				336088F51BD8C07500AB9492 /* basketball.png in Resources */,
 				336088FB1BD8C07500AB9492 /* rugby.png in Resources */,
@@ -310,6 +321,7 @@
 				336088E81BD8BDEC00AB9492 /* ProductCell.swift in Sources */,
 				336088BA1BD8BC0A00AB9492 /* ViewController.swift in Sources */,
 				336088B81BD8BC0A00AB9492 /* AppDelegate.swift in Sources */,
+				336089001BD8CA3C00AB9492 /* CartCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

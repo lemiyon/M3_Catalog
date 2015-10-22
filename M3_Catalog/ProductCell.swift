@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ProductCellDelegate : class {
-    func addCart(productCode : String)
+    func addCart(productName: String)
 }
 
 
@@ -23,6 +23,10 @@ class ProductCell: UITableViewCell {
     
     //델리게이트
     weak var delegate : ProductCellDelegate!
+    
+    @IBAction func addCart(sender: AnyObject) {
+        delegate.addCart(productName.text!)
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
