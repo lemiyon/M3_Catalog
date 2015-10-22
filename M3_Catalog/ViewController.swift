@@ -13,6 +13,7 @@ class ViewController: UIViewController, UITableViewDataSource, ProductCellDelega
     var data : [String]!
     var dataPrice : [Int]!
     
+    
     //사용자의 카트 안 요소
     //안타깝게 요소 갯수가 처리가 안된다. 이건 자료형을 변경해야 한다.
     var userCart : [(String, Int)] = []

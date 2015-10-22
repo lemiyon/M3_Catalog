@@ -129,20 +129,7 @@
 		336088B61BD8BC0A00AB9492 /* M3_Catalog */ = {
 			isa = PBXGroup;
 			children = (
-				336088E91BD8C07500AB9492 /* baseball.png */,
-				336088EA1BD8C07500AB9492 /* basketball.png */,
-				336088EB1BD8C07500AB9492 /* billiard.png */,
-				336088EC1BD8C07500AB9492 /* football.png */,
-				336088ED1BD8C07500AB9492 /* golf.png */,
-				336088EE1BD8C07500AB9492 /* icehockey.png */,
-				336088EF1BD8C07500AB9492 /* pingpong.png */,
-				336088F01BD8C07500AB9492 /* rugby.png */,
-				336088F11BD8C07500AB9492 /* shuttlecock.png */,
-				336088F21BD8C07500AB9492 /* tennis.png */,
-				336088F31BD8C07500AB9492 /* volleyball.png */,
-				336089011BD8CB2100AB9492 /* add.png */,
-				336089021BD8CB2100AB9492 /* remove.png */,
-				336088E51BD8BD0900AB9492 /* Cart.png */,
+				336089051BD8DC0E00AB9492 /* Images */,
 				336088B71BD8BC0A00AB9492 /* AppDelegate.swift */,
 				336088B91BD8BC0A00AB9492 /* ViewController.swift */,
 				336088BB1BD8BC0A00AB9492 /* Main.storyboard */,
@@ -171,6 +158,27 @@
 				336088D91BD8BC0A00AB9492 /* Info.plist */,
 			);
 			path = M3_CatalogUITests;
+			sourceTree = "<group>";
+		};
+		336089051BD8DC0E00AB9492 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				336088E91BD8C07500AB9492 /* baseball.png */,
+				336088EA1BD8C07500AB9492 /* basketball.png */,
+				336088EB1BD8C07500AB9492 /* billiard.png */,
+				336088EC1BD8C07500AB9492 /* football.png */,
+				336088ED1BD8C07500AB9492 /* golf.png */,
+				336088EE1BD8C07500AB9492 /* icehockey.png */,
+				336088EF1BD8C07500AB9492 /* pingpong.png */,
+				336088F01BD8C07500AB9492 /* rugby.png */,
+				336088F11BD8C07500AB9492 /* shuttlecock.png */,
+				336088F21BD8C07500AB9492 /* tennis.png */,
+				336088F31BD8C07500AB9492 /* volleyball.png */,
+				336089011BD8CB2100AB9492 /* add.png */,
+				336089021BD8CB2100AB9492 /* remove.png */,
+				336088E51BD8BD0900AB9492 /* Cart.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
