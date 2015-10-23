@@ -24,8 +24,10 @@ class ViewController: UIViewController, UITableViewDataSource, ProductCellDelega
     //카트 아이콘을 누르면 userCart에 추가하고, 이하의 카트 섹션에도 추가할 수 있게 데이터를 준비한다.
     func addCart(productName: String) {
     
-        //같은 이름의 아이템이 있는지 검사해 있으면 수량만 늘려준다.
-    for var item in userCart
+    
+        //이 방법으로 하면 배열의 요소에 직접 접근할 수 없다. item은 개별적으로 복사된 복사본이므로, 전혀 변화하지 않는다.
+
+  /*  for var item in userCart
     {
         if item.0 == productName
         {
@@ -35,7 +37,19 @@ class ViewController: UIViewController, UITableViewDataSource, ProductCellDelega
             }
     
     }
-    
+    */
+        
+       //같은 이름의 아이템이 있는지 검사해 있으면 수량만 늘려준다.
+    // index를 반복자를 통해 받아와서, 직접 userCart[index]에 접근해 바꾸어 줘야 한다.
+        for (index , value) in userCart.enumerate()
+        {
+            if value.0 == productName
+            {
+                userCart[index].1 = userCart[index].1 + 1
+                tableView.reloadData()
+                return
+            }
+        }
     
     //만약 같은 이름의 아이템이 없으면 새로 추가해 준다.
     //배열의 맨 앞에 추가하게 Index를 0으로
@@ -46,12 +60,12 @@ class ViewController: UIViewController, UITableViewDataSource, ProductCellDelega
     
     
     func addItem(productName : String) {
-        for var item in userCart
+        for (index , value) in userCart.enumerate()
         {
-            if item.0 == productName
+            if value.0 == productName
             {
-                item.1++
-                 tableView.reloadData()
+                userCart[index].1 = userCart[index].1 + 1
+                tableView.reloadData()
                 return
             }
         }
@@ -61,21 +75,19 @@ class ViewController: UIViewController, UITableViewDataSource, ProductCellDelega
     //-버튼 누를 시 작동. userCart내에서 해당하는 이름의 Product의 개수(ea)를 1씩 빼고, 개수가 0이 되면 아예 userCart내에서 지운다.
     func removeItem(productName : String)
     {
-        var index : Int = 0
         
-        for var item in userCart
+        for (index , value) in userCart.enumerate()
         {
-            if item.0 == productName
+            if value.0 == productName
             {
-                item.1--
+                userCart[index].1 = userCart[index].1 - 1
                 
-                if item.1 <= 0
+                if userCart[index].1 <= 0
                 {
                     userCart.removeAtIndex(index)
                 }
+       
             }
-            
-            index++
         }
         
          tableView.reloadData()
