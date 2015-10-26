@@ -8,116 +8,40 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, ProductCellDelegate, CartCellDelegate {
-
+class ViewController: UIViewController, UITableViewDataSource, ProductCellDelegate {
+    
     var data : [String]!
     var dataPrice : [Int]!
-    
-    
-    //사용자의 카트 안 요소
-    //안타깝게 요소 갯수가 처리가 안된다. 이건 자료형을 변경해야 한다.
-    var userCart : [(String, Int)] = []
     
     @IBOutlet weak var tableView: UITableView!
     
     //ProductCellDelegate
     //카트 아이콘을 누르면 userCart에 추가하고, 이하의 카트 섹션에도 추가할 수 있게 데이터를 준비한다.
+    
+    //Part2. 이제 카트 아이콘을 누르면 CartViewController에 있는 테이블 뷰의 데이터로 보내줘야 한다.
+    //즉, 데이터를 그때 그때 넘겨주던가 아니면 모델을 만들어 저장을 하고 거기서 참조를 하는 방식으로 가야 할 것 같다.
+    //그렇다면 CatalogDataManager에 이 자료를 넘겨줘야 한다. 이제 부터 모든 카트 관련 처리는 카트 매니져에서 한다.
     func addCart(productName: String) {
-    
-    
-        //이 방법으로 하면 배열의 요소에 직접 접근할 수 없다. item은 개별적으로 복사된 복사본이므로, 전혀 변화하지 않는다.
-
-  /*  for var item in userCart
-    {
-        if item.0 == productName
-        {
-            item.1++
-            tableView.reloadData()
-            return
-            }
-    
-    }
-    */
-        
-       //같은 이름의 아이템이 있는지 검사해 있으면 수량만 늘려준다.
-    // index를 반복자를 통해 받아와서, 직접 userCart[index]에 접근해 바꾸어 줘야 한다.
-        for (index , value) in userCart.enumerate()
-        {
-            if value.0 == productName
-            {
-                userCart[index].1 = userCart[index].1 + 1
-                tableView.reloadData()
-                return
-            }
-        }
-    
-    //만약 같은 이름의 아이템이 없으면 새로 추가해 준다.
-    //배열의 맨 앞에 추가하게 Index를 0으로
-    userCart.insert((productName, 1), atIndex: 0)
-    
-         tableView.reloadData()
+        CartManager.sharedManager.addItem(itemName: productName)
     }
     
     
-    func addItem(productName : String) {
-        for (index , value) in userCart.enumerate()
-        {
-            if value.0 == productName
-            {
-                userCart[index].1 = userCart[index].1 + 1
-                tableView.reloadData()
-                return
-            }
-        }
-         tableView.reloadData()
-    }
-    
-    //-버튼 누를 시 작동. userCart내에서 해당하는 이름의 Product의 개수(ea)를 1씩 빼고, 개수가 0이 되면 아예 userCart내에서 지운다.
-    func removeItem(productName : String)
-    {
-        
-        for (index , value) in userCart.enumerate()
-        {
-            if value.0 == productName
-            {
-                userCart[index].1 = userCart[index].1 - 1
-                
-                if userCart[index].1 <= 0
-                {
-                    userCart.removeAtIndex(index)
-                }
-       
-            }
-        }
-        
-         tableView.reloadData()
-        
-    }
-    
-
     
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if section == 0
-        {
+
             return "Catalog"
-        }
-        else
-        {
-            return "Cart"
-        }
+        
     }
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 2
+        return 1
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        if indexPath.section == 0
-        {
         let cell = tableView.dequeueReusableCellWithIdentifier("PRODUCT_CELL")
             as! ProductCell
         cell.productImage.image = UIImage(named: "\(data[indexPath.row]).png")
@@ -125,32 +49,29 @@ class ViewController: UIViewController, UITableViewDataSource, ProductCellDelega
         cell.productPrice.text = "\(dataPrice[indexPath.row])"
         cell.delegate = self
             return cell
-        }
-        else
-        {
-        let cell = tableView.dequeueReusableCellWithIdentifier("CART_CELL") as! CartCell
-        
-        cell.productName.text = userCart[indexPath.row].0
-        cell.productEach.text = "\(userCart[indexPath.row].1)"
-        cell.delegate = self
-            return cell
-        }
-    
-        
+
+ 
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if section == 0
-        {
         return data.count
-        }
-        else
-        {
-        return userCart.count
-        }
+        
         
     }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(cell)!
+        let selected  = data[indexPath.row]
+        
+        print("사용자가 선택한 데이터 : \(selected)")
+        
+        let detailVC = segue.destinationViewController as! DetailViewController
+        detailVC.itemName = selected
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
