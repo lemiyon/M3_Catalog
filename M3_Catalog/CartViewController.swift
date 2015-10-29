@@ -20,8 +20,13 @@ class CartViewController: UIViewController, CartCellDelegate, UITableViewDataSou
         let cartManager = CartManager.sharedManager
         
         
-        cell.productName.text =  cartManager.userCart[indexPath.row].0
-        cell.productEach.text = "\(cartManager.userCart[indexPath.row].1)"
+        //이렇게 뷰를 바꾸는 것은 시스템이 자동으로 화면(뷰)를 업데이트하도록 기다리는 것.
+        /* 뷰를 바꾸는 것은 두가지가 있다.
+        1. 내가 강제(데이터 소스 필요한 녀석들). 리로드를 메인 스레드에서 하지 않으면 리프레시가 되질 않는다. 리로드는 꼭 메인 스레드에서 하세요!
+        2. 시스템이 할 때 까지 기다린다. 아래의 예는 시스템이 할 때 까지 기다리는 것
+*/
+        cell.productName.text =  cartManager.userCart[indexPath.row].name
+        cell.productEach.text = "\(cartManager.userCart[indexPath.row].count)"
         cell.delegate = self
         return cell
         
@@ -36,7 +41,9 @@ class CartViewController: UIViewController, CartCellDelegate, UITableViewDataSou
         return "Cart"
     }
     
-    
+    //view가 화면에 안 보이게 되는 순간 호출
+    override func viewDidDisappear(animated: Bool) {
+    }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return CartManager.sharedManager.count()
@@ -56,6 +63,7 @@ class CartViewController: UIViewController, CartCellDelegate, UITableViewDataSou
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        //object는 이걸 받을 사람을 하는 것!! 굳이 하진 않는게 좋다 =. 굳이 하나만 커뮤니케이션을 하겠다면!
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleModelChange:", name: modelChangeNotification, object: nil)
         
         
