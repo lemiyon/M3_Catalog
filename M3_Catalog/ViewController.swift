@@ -1,8 +1,7 @@
 //
 //  ViewController.swift
 //  M3_Catalog
-//  http://stackoverflow.com/questions/23755974/cocoapods-pod-install-takes-forever/31309780#31309780
-//  pod install이 백만년은 걸릴 거 같을 때 참조
+//
 //  Created by sdt5 on 2015. 10. 22..
 //  Copyright © 2015년 TAcademyBola. All rights reserved.
 //
@@ -35,9 +34,6 @@ class ViewController: UIViewController, UITableViewDataSource, ProductCellDelega
         
     }
     
-    @IBAction func pressClearDB(sender: AnyObject) {
-        CartManager.sharedManager.clearDB()
-    }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
